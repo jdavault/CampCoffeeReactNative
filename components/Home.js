@@ -6,10 +6,10 @@ import EntypoIcon from "react-native-vector-icons/Entypo"
 
 import { SafeAreaView } from "react-native-safe-area-context"
 
-import activitiesData from "../assets/data/activitiesData"
-import discoverCategoriesData from "../assets/data/discoverCategoriesData"
+import coffeeData from "../assets/data/coffeeData"
+import coffeeCategoryData from "../assets/data/coffeeCategoryData"
 import learnMoreData from "../assets/data/learnMoreData"
-import discoverData from "../assets/data/discoverData"
+import discoverCoffeeData from "../assets/data/discoverCoffeeData"
 import profile from "../assets/images/person.png"
 import { FlatList, TouchableOpacity } from "react-native-gesture-handler"
 
@@ -90,7 +90,7 @@ const Home = ({ navigation }) => {
         </View>
         <View style={styles.discoverItemsWrapper}>
           <FlatList
-            data={discoverData}
+            data={discoverCoffeeData}
             renderItem={renderDiscoveryItem}
             keyExtractor={(item) => item.id}
             horizontal
@@ -103,7 +103,7 @@ const Home = ({ navigation }) => {
         <Text style={styles.activitiesTitle}>Activities</Text>
         <View style={styles.discoverItemsWrapper}>
           <FlatList
-            data={activitiesData}
+            data={coffeeData}
             renderItem={renderActivityItem}
             keyExtractor={(item) => item.id}
             horizontal
