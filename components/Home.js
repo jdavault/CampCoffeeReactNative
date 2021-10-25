@@ -6,16 +6,16 @@ import EntypoIcon from "react-native-vector-icons/Entypo"
 
 import { SafeAreaView } from "react-native-safe-area-context"
 
-import coffeeData from "../assets/data/coffeeData"
-import coffeeCategoryData from "../assets/data/coffeeCategoryData"
+import coffeeTypes from "../assets/data/coffeeTypes"
+import coffeeCategories from "../assets/data/coffeeCategories"
 import learnMoreData from "../assets/data/learnMoreData"
-import discoverCoffeeData from "../assets/data/discoverCoffeeData"
+import coffeeDiscoveryData from "../assets/data/coffeeDiscoveryData"
 import profile from "../assets/images/joe.jpg"
 import { FlatList, TouchableOpacity } from "react-native-gesture-handler"
 
 const Home = ({ navigation }) => {
 
-  const renderDiscoveryItem = ({ item }) => {
+  const renderDiscoverItem = ({ item }) => {
     return (
       <TouchableOpacity
         onPress={() => navigation.navigate("Details", { item })}
@@ -37,7 +37,7 @@ const Home = ({ navigation }) => {
     )
   }
 
-  const renderActivityItem = ({ item }) => {
+  const renderTypeItems = ({ item }) => {
     return (
       <View style={[styles.activityItemWrapper,
       {
@@ -77,7 +77,7 @@ const Home = ({ navigation }) => {
           <Image source={profile} style={styles.profileImage} />
         </View>
       </SafeAreaView>
-      {/* Discover -- rolling images*/}
+      {/* Discover -- rolling images */}
       <View style={styles.discoverWrapper}>
         <Text style={styles.discoverTitle}>Discover Camp Coffee</Text>
         <View style={styles.discoverCategoriesWrapper}>
@@ -88,28 +88,28 @@ const Home = ({ navigation }) => {
         </View>
         <View style={styles.discoverItemsWrapper}>
           <FlatList
-            data={discoverCoffeeData}
-            renderItem={renderDiscoveryItem}
+            data={coffeeDiscoveryData}
+            renderItem={renderDiscoverItem}
             keyExtractor={(item) => item.id}
             horizontal
             showsHorizontalScrollIndicator={false}
           />
         </View>
       </View>
-      {/* Activities */}
+      {/* Types of Beans */}
       <View style={styles.coffeeTypesWrapper}>
         <Text style={styles.coffeeTypesTitle}>Types of Beans</Text>
         <View style={styles.discoverItemsWrapper}>
           <FlatList
-            data={coffeeData}
-            renderItem={renderActivityItem}
+            data={coffeeTypes}
+            renderItem={renderTypeItems}
             keyExtractor={(item) => item.id}
             horizontal
             showsHorizontalScrollIndicator={false}
           />
         </View>
       </View>
-      {/*   */}
+      {/* Learn more data -- coffee makers */}
       <View style={styles.learnMoreWrapper}>
         <Text style={styles.learnMoreTitle}>Learn More</Text>
         <View style={styles.learnMoreItemsWrapper}>
@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
     marginRight: 30,
     fontFamily: "Lato-Regular",
     fontSize: 16,
-    color: colors.gray
+    color: colors.mediumGray
 
   },
   discoverItem: {
@@ -186,21 +186,6 @@ const styles = StyleSheet.create({
   discoverWrapper: {
     marginTop: 10
   },
-  menuWrapper: {
-    marginHorizontal: 20,
-    marginTop: 20,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center"
-
-  },
-  menuIcon: {
-  },
-  profileImage: {
-    width: 52,
-    height: 52,
-    borderRadius: 10
-  },
   coffeeTypesWrapper: {
     marginTop: 10
 
@@ -226,7 +211,7 @@ const styles = StyleSheet.create({
     marginTop: 5,
     fontFamily: "Lato-Bold",
     fontSize: 14,
-    color: colors.gray
+    color: colors.mediumGray
   },
   learnMoreWrapper: {
     marginTop: 10
@@ -239,13 +224,13 @@ const styles = StyleSheet.create({
     color: colors.black
   },
   learnMoreItemsWrapper: {
-    marginVertical: 20
+    paddingVertical: 20
   },
   learnMoreItem: {
     height: 180,
     width: 170,
     justifyContent: "flex-end",
-    marginRight: 20
+    marginRight: 15
   },
   learnMoreItemImage: {
     borderRadius: 20,
@@ -254,10 +239,24 @@ const styles = StyleSheet.create({
     fontFamily: "Lato-Bold",
     fontSize: 18,
     color: colors.white,
-    marginHorizontal: 10,
-    marginVertical: 20
+    marginHorizontal: 15,
+    marginVertical: 10
 
   },
+  menuWrapper: {
+    marginHorizontal: 20,
+    marginTop: 20,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center"
+
+  },
+  profileImage: {
+    width: 52,
+    height: 52,
+    borderRadius: 10
+  }
+
 })
 
 export default Home;

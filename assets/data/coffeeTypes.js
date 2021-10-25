@@ -1,4 +1,4 @@
-const coffeeData = [
+const coffeeTypes = [
   {
     id: 'coffee-1',
     title: 'ARABICA',
@@ -31,4 +31,4 @@ const coffeeData = [
   },
 ];
 
-export default coffeeData;
+export default coffeeTypes;

@@ -1,11 +1,17 @@
 import React from "react"
 import { Text, View } from "react-native";
+import { Center } from "./Center";
+import colors from "../assets/colors/colors";
 
 const Liked = () => {
   return (
-    <View>
-      <Text>Liked</Text>
-    </View>
+    <Center>
+      <Text style={{
+        fontFamily: "Lato-Bold",
+        fontSize: 20,
+        color: colors.brown
+      }}>Liked Screen</Text>
+    </Center>
   );
 }
 
