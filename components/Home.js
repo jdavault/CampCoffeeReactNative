@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useContext } from "react"
 import { Text, View, StyleSheet, Image, ScrollView, ImageBackground } from "react-native";
 import colors from "../assets/colors/colors";
 import Feather from "react-native-vector-icons/Feather"
@@ -12,8 +12,13 @@ import learnMoreData from "../assets/data/learnMoreData"
 import coffeeDiscoveryData from "../assets/data/coffeeDiscoveryData"
 import profile from "../assets/images/joe.jpg"
 import { FlatList, TouchableOpacity } from "react-native-gesture-handler"
+import { AuthContext } from "./AuthProvider";
 
 const Home = ({ navigation }) => {
+
+  const { user, logout } = useContext(AuthContext)
+  console.log("user-HOME", user)
+  console.log("login-HOME", logout)
 
   const renderDiscoverItem = ({ item }) => {
     return (
@@ -73,8 +78,15 @@ const Home = ({ navigation }) => {
             name="menu"
             size={32}
             color={colors.black}
+
+            onPress={() => navigation.toggleDrawer()}
+
             style={styles.menuIcon} />
-          <Image source={profile} style={styles.profileImage} />
+          <TouchableOpacity
+            onPress={() => logout()}>
+
+            <Image source={profile} style={styles.profileImage} />
+          </TouchableOpacity>
         </View>
       </SafeAreaView>
       {/* Discover -- rolling images */}

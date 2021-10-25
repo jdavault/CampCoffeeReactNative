@@ -1,7 +1,7 @@
 import * as React from "react";
 import { View } from "react-native"
 
-export const Center = ({ children }) => {
+const Center = ({ children }) => {
   return (
     <View
       style={{
@@ -14,3 +14,5 @@ export const Center = ({ children }) => {
     </View>
   );
 };
+
+export default Center

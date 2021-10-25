@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 import EntypoIcon from "react-native-vector-icons/Entypo"
 import MaterialUIIcon from "react-native-vector-icons/MaterialCommunityIcons"
 import colors from "../assets/colors/colors";
+
 import Home from "./Home"
 import Liked from "./Liked"
 import Profile from "./Profile"
