@@ -10,7 +10,7 @@ import coffeeData from "../assets/data/coffeeData"
 import coffeeCategoryData from "../assets/data/coffeeCategoryData"
 import learnMoreData from "../assets/data/learnMoreData"
 import discoverCoffeeData from "../assets/data/discoverCoffeeData"
-import profile from "../assets/images/person.png"
+import profile from "../assets/images/joe.jpg"
 import { FlatList, TouchableOpacity } from "react-native-gesture-handler"
 
 const Home = ({ navigation }) => {
@@ -41,7 +41,7 @@ const Home = ({ navigation }) => {
     return (
       <View style={[styles.activityItemWrapper,
       {
-        marginLeft: item.id === 'activities-1' ? 20 : 0
+        marginLeft: item.id === 'coffee-1' ? 20 : 0
       }]}>
         <Image source={item.image} style={styles.activityItemImage} />
         <Text style={styles.activityItemText}>{item.title}</Text>
@@ -64,11 +64,9 @@ const Home = ({ navigation }) => {
     )
   }
 
-
-
   return (
     <ScrollView style={styles.container}>
-      {/* Header */}
+      {/* Header - hamburger menu and profile image */}
       <SafeAreaView>
         <View style={styles.menuWrapper}>
           <Feather
@@ -79,14 +77,14 @@ const Home = ({ navigation }) => {
           <Image source={profile} style={styles.profileImage} />
         </View>
       </SafeAreaView>
-      {/* Discover */}
+      {/* Discover -- rolling images*/}
       <View style={styles.discoverWrapper}>
-        <Text style={styles.discoverTitle}>Discover</Text>
+        <Text style={styles.discoverTitle}>Discover Camp Coffee</Text>
         <View style={styles.discoverCategoriesWrapper}>
-          <Text style={[styles.discoverCategoryText, { color: colors.orange }]}>All</Text>
-          <Text style={styles.discoverCategoryText}>Destinations</Text>
-          <Text style={styles.discoverCategoryText}>Cities</Text>
-          <Text style={styles.discoverCategoryText}>Experiences</Text>
+          <Text style={[styles.discoverCategoryText, { color: colors.brown }]}>All</Text>
+          <Text style={styles.discoverCategoryText}>Latte</Text>
+          <Text style={styles.discoverCategoryText}>Cappuccino</Text>
+          <Text style={styles.discoverCategoryText}>Americano</Text>
         </View>
         <View style={styles.discoverItemsWrapper}>
           <FlatList
@@ -99,8 +97,8 @@ const Home = ({ navigation }) => {
         </View>
       </View>
       {/* Activities */}
-      <View style={styles.activitiesWrapper}>
-        <Text style={styles.activitiesTitle}>Activities</Text>
+      <View style={styles.coffeeTypesWrapper}>
+        <Text style={styles.coffeeTypesTitle}>Types of Beans</Text>
         <View style={styles.discoverItemsWrapper}>
           <FlatList
             data={coffeeData}
@@ -130,7 +128,7 @@ const Home = ({ navigation }) => {
 }
 
 const styles = StyleSheet.create({
-  activitiesWrapper: {
+  coffeeTypesWrapper: {
 
   },
   container: {
@@ -151,7 +149,7 @@ const styles = StyleSheet.create({
   },
   discoverItem: {
     width: 179,
-    height: 250,
+    height: 230,
     justifyContent: "flex-end",
     paddingHorizontal: 10,
     paddingVertical: 15,
@@ -186,7 +184,7 @@ const styles = StyleSheet.create({
 
   },
   discoverWrapper: {
-    marginTop: 20
+    marginTop: 10
   },
   menuWrapper: {
     marginHorizontal: 20,
@@ -203,11 +201,11 @@ const styles = StyleSheet.create({
     height: 52,
     borderRadius: 10
   },
-  activitiesWrapper: {
+  coffeeTypesWrapper: {
     marginTop: 10
 
   },
-  activitiesTitle: {
+  coffeeTypesTitle: {
     marginHorizontal: 20,
     fontFamily: "Lato-Bold",
     fontSize: 24,

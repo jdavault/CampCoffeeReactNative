@@ -12,8 +12,9 @@ import Details from "./components/Details"
 import Liked from "./components/Liked"
 import Profile from "./components/Profile"
 
-//EntypoIcon.loadFont()
-//MaterialUIIcon.loadFont()
+import AppLoading from 'expo-app-loading';
+import { useFonts } from 'expo-font';
+
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -21,7 +22,7 @@ const TabNavigator = () => {
   return (<Tab.Navigator
     tabBarOptions={{
       styles: styles.tabBar,
-      activeTintColor: colors.orange,
+      activeTintColor: colors.brown,
       inactiveTintColor: colors.gray,
       showLabel: false
     }}>
@@ -44,20 +45,29 @@ const TabNavigator = () => {
 }
 
 const App = () => {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="TabNavigator"
-          component={TabNavigator}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen name="Details"
-          component={Details}
-          options={{ headerShown: false }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
-  )
+  let [fontsLoaded] = useFonts({
+    'Lato-Bold': require('./assets/fonts/Lato-Bold.ttf'),
+    'Lato-Regular': require('./assets/fonts/Lato-Regular.ttf'),
+  });
+
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  } else {
+    return (
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="TabNavigator"
+            component={TabNavigator}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen name="Details"
+            component={Details}
+            options={{ headerShown: false }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    )
+  }
 }
 
 const styles = StyleSheet.create({

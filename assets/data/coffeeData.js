@@ -2,32 +2,32 @@ const coffeeData = [
   {
     id: 'coffee-1',
     title: 'ARABICA',
-    image: require('../images/1.jpg'),
+    image: require('../images/arabica-t.png'),
   },
   {
     id: 'coffee-2',
     title: 'ROBUSTA',
-    image: require('../images/2.jpg'),
+    image: require('../images/robusta-t.png'),
   },
   {
     id: 'coffee-3',
     title: 'CAPPUCCINO',
-    image: require('../images/3.jpg'),
+    image: require('../images/cappuccino-t.png'),
   },
   {
     id: 'coffee-6',
     title: 'AMERICANO',
-    image: require('../images/4.jpg'),
+    image: require('../images/americano-t.png'),
   },
   {
     id: 'coffee-5',
     title: 'EXPRESSO',
-    image: require('../images/5.jpg'),
+    image: require('../images/expresso-t.png'),
   },
   {
     id: 'coffee-4',
     title: 'DOPPIO',
-    image: require('../images/7.jpg'),
+    image: require('../images/doppio-t.png'),
   },
 ];
 

@@ -2,7 +2,7 @@ const learnMoreData = [
   {
     id: 'learnMore-1',
     title: 'French Press',
-    image: require('../images/5.jpg'),
+    image: require('../images/coffee.jpg'),
   },
   {
     id: 'learnMore-2',
@@ -22,7 +22,7 @@ const learnMoreData = [
   {
     id: 'learnMore-5',
     title: 'Moka',
-    image: require('../images/coffee.jpg'),
+    image: require('../images/5.jpg'),
   },
 ];
 

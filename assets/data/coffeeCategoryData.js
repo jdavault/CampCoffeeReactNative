@@ -5,15 +5,15 @@ const coffeeCategoryData = [
   },
   {
     id: 'discover-categories-2',
-    text: 'Destinations',
+    text: 'Latte',
   },
   {
     id: 'discover-categories-3',
-    text: 'Cities',
+    text: 'Cappuccino',
   },
   {
     id: 'discover-categories-4',
-    text: 'Experiences',
+    text: 'Americano',
   },
 ];
 
