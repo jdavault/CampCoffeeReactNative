@@ -9,6 +9,7 @@ const store = ConfigureStore();
 
 const Providers = () => {
   return (
+    //Redux and Auth Providers
     <Provider store={store}>
       <AuthProvider>
         <Main />

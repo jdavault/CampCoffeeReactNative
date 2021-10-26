@@ -1,31 +1,45 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect } from "react"
 import { Text, View, StyleSheet, Image, ScrollView, ImageBackground } from "react-native";
 import colors from "../assets/colors/colors";
 import Feather from "react-native-vector-icons/Feather"
 import EntypoIcon from "react-native-vector-icons/Entypo"
-
 import { SafeAreaView } from "react-native-safe-area-context"
-
-import coffeeTypes from "../assets/data/coffeeTypes"
-import coffeeCategories from "../assets/data/coffeeCategories"
-import learnMoreData from "../assets/data/learnMoreData"
-import coffeeDiscoveryData from "../assets/data/coffeeDiscoveryData"
-import profile from "../assets/images/joe.jpg"
 import { FlatList, TouchableOpacity } from "react-native-gesture-handler"
 import { AuthContext } from "./AuthProvider";
-
 import { connect, useSelector, useDispatch } from "react-redux";
-import { baseUrl } from '../shared/baseUrl';
-import Loading from './LoadingComponent';
+import { fetchCoffees, fetchLearnMore, fetchCoffeeTypes } from '../redux/ActionCreators';
+
+//import coffeeCategories from "../assets/data/coffeeCategories"
+//import coffeeDiscoveryData from "../assets/data/coffeeDiscoveryData"
+//import learnMoreData from "../assets/data/learnMoreData"
+//import coffeeTypes from "../assets/data/coffeeTypes"
+import CoffeeImages from "./ImageCollection"
+import profile from "../assets/images/joe.jpg"
 
 const Home = ({ navigation }) => {
+
+  //REDUX with "Hooks" (e.g. useSelector and useDispatch)
+  const coffeeData = useSelector(state => state.coffees);
+  const coffeeTypes = useSelector(state => state.coffeeTypes);
+  const learnMoreData = useSelector(state => state.learnMore);
+  const { logout } = useContext(AuthContext)
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchCoffeeTypes())
+    dispatch(fetchCoffees())
+    dispatch(fetchLearnMore())
+  }, [])
+
+  console.log("*********MYCOFFEE_TYPES***********", coffeeTypes)
+
   const renderDiscoverItem = ({ item }) => {
     return (
       <TouchableOpacity
         onPress={() => navigation.navigate("Details", { item })}
       >
         <ImageBackground
-          source={item.image}
+          source={CoffeeImages[item.id]}
           style={[
             styles.discoverItem,
             { marginLeft: item.id === "discover-1" ? 20 : 0 }
@@ -42,21 +56,28 @@ const Home = ({ navigation }) => {
   }
 
   const renderTypeItems = ({ item }) => {
+    console.log("--Coffee-Type-Item---", item)
+
     return (
       <View style={[styles.activityItemWrapper,
       {
         marginLeft: item.id === 'coffee-1' ? 20 : 0
       }]}>
-        <Image source={item.image} style={styles.activityItemImage} />
+        <Image
+          //source={item.image}
+          source={CoffeeImages[item.id]}
+          style={styles.activityItemImage} />
         <Text style={styles.activityItemText}>{item.title}</Text>
       </View>
     )
   }
 
   const renderLearnMoreItem = ({ item }) => {
+    //console.log("learnMore-Item", item)
     return (
       <ImageBackground
-        source={item.image}
+        //source={item.image}
+        source={CoffeeImages[item.id]}
         style={[
           styles.learnMoreItem,
           { marginLeft: item.id === "learnMore-1" ? 20 : 0 }
@@ -77,13 +98,9 @@ const Home = ({ navigation }) => {
             name="menu"
             size={32}
             color={colors.black}
-
-            onPress={() => navigation.toggleDrawer()}
-
-            style={styles.menuIcon} />
+            onPress={() => navigation.toggleDrawer()} />
           <TouchableOpacity
             onPress={() => logout()}>
-
             <Image source={profile} style={styles.profileImage} />
           </TouchableOpacity>
         </View>
@@ -99,8 +116,7 @@ const Home = ({ navigation }) => {
         </View>
         <View style={styles.discoverItemsWrapper}>
           <FlatList
-            //data={this.props.coffees.coffeeDiscoveryData}
-            data={coffeeDiscoveryData}
+            data={coffeeData.coffees}
             renderItem={renderDiscoverItem}
             keyExtractor={(item) => item.id}
             horizontal
@@ -113,7 +129,7 @@ const Home = ({ navigation }) => {
         <Text style={styles.coffeeTypesTitle}>Types of Beans</Text>
         <View style={styles.discoverItemsWrapper}>
           <FlatList
-            data={coffeeTypes}
+            data={coffeeTypes.coffeeTypes}  //coffeeTypes
             renderItem={renderTypeItems}
             keyExtractor={(item) => item.id}
             horizontal
@@ -126,7 +142,7 @@ const Home = ({ navigation }) => {
         <Text style={styles.learnMoreTitle}>Learn More</Text>
         <View style={styles.learnMoreItemsWrapper}>
           <FlatList
-            data={learnMoreData}
+            data={learnMoreData.learnMore}
             renderItem={renderLearnMoreItem}
             keyExtractor={(item) => item.id}
             horizontal

@@ -2,17 +2,15 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { coffees } from './coffees';
-import { comments } from './comments';
-import { promotions } from './promotions';
-import { partners } from './partners';
+import { coffeeTypes } from './coffeeTypes';
+import { learnMore } from './learnMore';
 
 export const ConfigureStore = () => {
   const store = createStore(
     combineReducers({
       coffees,
-      comments,
-      partners,
-      promotions
+      coffeeTypes,
+      learnMore
     }),
     applyMiddleware(thunk, logger)
   );

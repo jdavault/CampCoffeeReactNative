@@ -1,49 +1,16 @@
 import * as ActionTypes from './ActionTypes';
 import { baseUrl } from '../shared/baseUrl';
 
-export const fetchComments = () => dispatch => {
-  return fetch(baseUrl + 'comments')
-    .then(response => {
-      if (response.ok) {
-        return response;
-      } else {
-        const error = new Error(`Error ${response.status}: ${response.statusText}`);
-        error.response = response;
-        throw error;
-      }
-    },
-      error => {
-        const errMess = new Error(error.message);
-        throw errMess;
-      })
-    .then(response => response.json())
-    .then(comments => dispatch(addComments(comments)))
-    .catch(error => dispatch(commentsFailed(error.message)));
-};
-
-export const commentsFailed = errMess => ({
-  type: ActionTypes.COMMENTS_FAILED,
-  payload: errMess
-});
-
-export const addComments = comments => ({
-  type: ActionTypes.ADD_COMMENTS,
-  payload: comments
-});
-
 export const fetchCoffees = () => dispatch => {
-  //console.log("1111", baseUrl + 'discoverCoffeeData')
   dispatch(coffeesLoading());
 
   return fetch(baseUrl + 'discoverCoffeeData')
     .then(response => {
       if (response.ok) {
-        //console.log("OK")
         return response;
       } else {
         const error = new Error(`Error ${response.status}: ${response.statusText}`);
         error.response = response;
-        //console.log(error)
         throw error;
       }
     },
@@ -70,11 +37,10 @@ export const addCoffees = coffees => ({
   payload: coffees
 });
 
-export const fetchPromotions = () => dispatch => {
+export const fetchCoffeeTypes = () => dispatch => {
+  dispatch(coffeeTypesLoading());
 
-  dispatch(promotionsLoading());
-
-  return fetch(baseUrl + 'promotions')
+  return fetch(baseUrl + 'CoffeeTypes')
     .then(response => {
       if (response.ok) {
         return response;
@@ -89,29 +55,29 @@ export const fetchPromotions = () => dispatch => {
         throw errMess;
       })
     .then(response => response.json())
-    .then(promotions => dispatch(addPromotions(promotions)))
-    .catch(error => dispatch(promotionsFailed(error.message)));
+    .then(coffeeTypes => dispatch(addCoffeeTypes(coffeeTypes)))
+    .catch(error => dispatch(coffeeTypesFailed(error.message)));
 };
 
-export const promotionsLoading = () => ({
-  type: ActionTypes.PROMOTIONS_LOADING
+export const coffeeTypesLoading = () => ({
+  type: ActionTypes.COFFEE_TYPES_LOADING
 });
 
-export const promotionsFailed = errMess => ({
-  type: ActionTypes.PROMOTIONS_FAILED,
+export const coffeeTypesFailed = errMess => ({
+  type: ActionTypes.COFFEE_TYPES_FAILED,
   payload: errMess
 });
 
-export const addPromotions = promotions => ({
-  type: ActionTypes.ADD_PROMOTIONS,
-  payload: promotions
+export const addCoffeeTypes = coffeeTypes => ({
+  type: ActionTypes.ADD_COFFEE_TYPES,
+  payload: coffeeTypes
 });
 
-export const fetchPartners = () => dispatch => {
+export const fetchLearnMore = () => dispatch => {
 
-  dispatch(partnersLoading());
+  dispatch(learnMoreLoading());
 
-  return fetch(baseUrl + 'partners')
+  return fetch(baseUrl + 'learnMoreData')
     .then(response => {
       if (response.ok) {
         return response;
@@ -126,20 +92,20 @@ export const fetchPartners = () => dispatch => {
         throw errMess;
       })
     .then(response => response.json())
-    .then(partners => dispatch(addPartners(partners)))
-    .catch(error => dispatch(partnersFailed(error.message)));
+    .then(pearnMore => dispatch(addLearnMore(pearnMore)))
+    .catch(error => dispatch(learnMoreFailed(error.message)));
 };
 
-export const partnersLoading = () => ({
-  type: ActionTypes.PARTNERS_LOADING
+export const learnMoreLoading = () => ({
+  type: ActionTypes.LEARN_MORE_LOADING
 });
 
-export const partnersFailed = errMess => ({
-  type: ActionTypes.PARTNERS_FAILED,
+export const learnMoreFailed = errMess => ({
+  type: ActionTypes.LEARN_MORE_FAILED,
   payload: errMess
 });
 
-export const addPartners = partners => ({
-  type: ActionTypes.ADD_PARTNERS,
-  payload: partners
+export const addLearnMore = learnMore => ({
+  type: ActionTypes.ADD_LEARN_MORE,
+  payload: learnMore
 });
