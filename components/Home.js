@@ -31,8 +31,6 @@ const Home = ({ navigation }) => {
     dispatch(fetchLearnMore())
   }, [])
 
-  console.log("*********MYCOFFEE_TYPES***********", coffeeTypes)
-
   const renderDiscoverItem = ({ item }) => {
     return (
       <TouchableOpacity
@@ -73,10 +71,8 @@ const Home = ({ navigation }) => {
   }
 
   const renderLearnMoreItem = ({ item }) => {
-    //console.log("learnMore-Item", item)
     return (
       <ImageBackground
-        //source={item.image}
         source={CoffeeImages[item.id]}
         style={[
           styles.learnMoreItem,

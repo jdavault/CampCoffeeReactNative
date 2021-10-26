@@ -1,14 +1,12 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { NavigationContainer } from "@react-navigation/native";
-import AppLoading from 'expo-app-loading';
 import { useFonts } from 'expo-font';
 import { ActivityIndicator, AsyncStorage, Text } from 'react-native';
-import MainStackNavigator from "./MainStackNavigation";
+import MainDrawerNavigator from './MainDrawerNavigation';
 
 import Center from './Center';
 import { AuthContext } from './AuthProvider';
 import Login from './Login';
-import MainDrawerNavigator from './MainDrawerNavigation';
 
 // Addresses the "Lato is not a system font" error
 const Main = () => {

@@ -1,24 +1,16 @@
 import React from 'react'
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { View, Image, ImageBackground } from 'react-native';
-import Liked from './Liked';
-
-import Profile from './Profile';
+import { ImageBackground } from 'react-native';
 import MainStackNavigator from './MainStackNavigation';
 import EntypoIcon from "react-native-vector-icons/Entypo"
 import MaterialUIIcon from "react-native-vector-icons/MaterialCommunityIcons"
+
 import colors from '../assets/colors/colors';
 import CustomSidebarMenu from './CustomSidebarMenu';
+import Liked from './Liked';
+import Profile from './Profile';
 
 const Drawer = createDrawerNavigator();
-
-const ImageHeader = () => {
-  return (
-    <ImageBackground
-      source={require('../assets/images/4.jpg')}
-    />
-  );
-}
 
 const MainDrawerNavigator = () => {
   return (

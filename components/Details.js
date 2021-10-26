@@ -3,6 +3,7 @@ import { Dimensions, ImageBackground, StyleSheet, Text, View } from "react-nativ
 import { TouchableOpacity } from "react-native-gesture-handler";
 import colors from "../assets/colors/colors";
 import Entypo from "react-native-vector-icons/Entypo"
+import CoffeeImages from "./ImageCollection"
 
 const height = Dimensions.get("window").height
 
@@ -11,7 +12,7 @@ const Details = ({ route, navigation }) => {
   return (
     <View style={styles.container}>
       <ImageBackground
-        source={item.imageBig}
+        source={CoffeeImages[item.id]}
         style={styles.backgroundImage}>
         <TouchableOpacity
           style={styles.backIcon}

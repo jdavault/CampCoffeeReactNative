@@ -1,0 +1,5 @@
+get http://0.0.0.0:3001/discoverCoffeeData
+###
+get http://0.0.0.0:3001/coffeeTypes
+###
+get http://0.0.0.0:3001/learnMoreData
