@@ -11,7 +11,6 @@ const Profile = ({ navigation }) => {
         fontSize: 30,
         color: colors.brown
       }}>Profile Screen</Text>
-
       <TouchableOpacity style={styles.btn}
         onPress={() => navigation.goBack()
         }>

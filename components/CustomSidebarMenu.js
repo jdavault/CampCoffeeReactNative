@@ -1,6 +1,3 @@
-// Custom Navigation Drawer / Sidebar with Image and Icon in Menu Options
-// https://aboutreact.com/custom-navigation-drawer-sidebar-with-image-and-icon-in-menu-options/
-
 import React from 'react';
 import {
   SafeAreaView,
@@ -25,16 +22,15 @@ import { Colors } from 'react-native/Libraries/NewAppScreen';
 //const winWidth = Dimensions.get("window").width
 
 const CustomSidebarMenu = (props) => {
-  const BASE_PATH =
-    'https://raw.githubusercontent.com/AboutReact/sampleresource/master/';
-  const proileImage = 'react_logo.png';
+  //const BASE_PATH =
+  //'http://localhost/assets';
+  //const proileImage = 'react_logo.png';
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
       {/*Top Large Image */}
       <ImageBackground
         source={require('../assets/images/5.jpg')}
-
         //source={{ uri: BASE_PATH + proileImage }}
         style={styles.sideMenuProfileIcon}
       >
@@ -51,12 +47,13 @@ const CustomSidebarMenu = (props) => {
           <View style={styles.customItem}>
             <Text style={{ fontFamily: "Lato-Bold", color: colors.white }}
               onPress={() => {
-                Linking.openURL('https://aboutreact.com/');
+                Linking.openURL('https://camp-coffee.netlify.app');
               }}>
               Rate Us
             </Text>
             <Image
-              source={{ uri: BASE_PATH + 'star_filled.png' }}
+              //source={{ uri: BASE_PATH + 'star_filled.png' }}
+              source={require('../assets/images/star_filled.png')}
               style={styles.iconStyle}
             />
           </View>

@@ -14,12 +14,11 @@ import profile from "../assets/images/joe.jpg"
 import { FlatList, TouchableOpacity } from "react-native-gesture-handler"
 import { AuthContext } from "./AuthProvider";
 
+import { connect, useSelector, useDispatch } from "react-redux";
+import { baseUrl } from '../shared/baseUrl';
+import Loading from './LoadingComponent';
+
 const Home = ({ navigation }) => {
-
-  const { user, logout } = useContext(AuthContext)
-  console.log("user-HOME", user)
-  console.log("login-HOME", logout)
-
   const renderDiscoverItem = ({ item }) => {
     return (
       <TouchableOpacity
@@ -100,6 +99,7 @@ const Home = ({ navigation }) => {
         </View>
         <View style={styles.discoverItemsWrapper}>
           <FlatList
+            //data={this.props.coffees.coffeeDiscoveryData}
             data={coffeeDiscoveryData}
             renderItem={renderDiscoverItem}
             keyExtractor={(item) => item.id}
@@ -138,6 +138,7 @@ const Home = ({ navigation }) => {
     </ScrollView>
   );
 }
+
 
 const styles = StyleSheet.create({
   coffeeTypesWrapper: {
@@ -271,4 +272,4 @@ const styles = StyleSheet.create({
 
 })
 
-export default Home;
+export default connect()(Home);
